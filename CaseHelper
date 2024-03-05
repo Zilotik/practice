@@ -1,0 +1,25 @@
+from re import fullmatch, sub
+
+class CaseHelper:
+    @staticmethod
+    def is_snake(string):
+        pattern = r'[a-z]+(_[a-z]+)*'
+        return bool(fullmatch(pattern, string))
+    
+    @staticmethod
+    def is_upper_camel(string):
+         pattern = r'([A-Z][a-z]+)*'
+         return bool(fullmatch(pattern, string))
+    
+    @staticmethod
+    def to_snake(string):
+        pattern = r'[a-z]?[A-Z]'
+        repl = lambda m: '_'.join(m.group().lower())
+        return sub(pattern, repl, string)
+    
+    @staticmethod
+    def to_upper_camel(string):
+        pattern = r'_([a-z])'
+        repl = lambda m: m.group(1).upper()
+        return sub(pattern, repl, string.capitalize())
+    
