@@ -1,0 +1,15 @@
+class StrExtension:
+    @staticmethod
+    def replace_all(string, chars, char):
+        for c in chars:
+            string = string.replace(c, char)
+        return string
+
+    @staticmethod
+    def remove_vowels(string):
+        return StrExtension.replace_all(string, chars="AEIOUYaeiouy", char="")
+
+    @staticmethod
+    def leave_alpha(string):
+        res = "".join(filter(str.isalpha, filter(str.isascii, string)))
+        return res
